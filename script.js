@@ -20,4 +20,5 @@ var svg = d3.select("body")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // Create Layers
-var dataset = d3.layout.stack()(["Yes", "No", "Always", "Always", "Sometimes", "Rarely", "Never", "Positive Influence", "Negative Influence", "No Influence"])
+var dataset = d3.layout.stack()(["Yes", "No", "Always", "Always", "Sometimes", "Rarely", "Never", "Positive Influence", "Negative Influence", "No Influence"].map(function(question)
+{return data.map(function(d){return {x: }})}))
