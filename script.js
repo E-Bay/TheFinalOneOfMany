@@ -1,11 +1,12 @@
-/*var dataPromise = d3.csv("Teens_Gaming_2008_csv.csv")
+var dataPromise = d3.csv("Teens_Gaming_2008_csv.csv")
 
 dataPromise.then(function(data)
 {
-    console.log(data)
+    var New = data.map(newData)
+    console.log(New)
 },
 function(err)
-{console.log(err)}) */
+{console.log(err)})
 
 var svg = d3.select("svg"),
             margin = { top: 20, right: 20, bottom: 30, left: 40 },
@@ -15,7 +16,7 @@ var svg = d3.select("svg"),
 
         var x0 = d3.scaleBand()
             .rangeRound([0, width])
-            .paddingInner(.8);
+            .paddingInner(.1);
 
         var x1 = d3.scaleBand()
             .padding(0.05);
@@ -26,34 +27,40 @@ var svg = d3.select("svg"),
         var z = d3.scaleOrdinal()
                   .range(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
         
-var data = [{Question: "4", Yes: "12", No: "8"}, {Question: "5", Always: "10", Sometimes: "6", Rarely: "1", Never: "3"}, {Question: "7", Positive: "11", Negative: "4", None: "5"}]
+var newData = function(data)
+{
+    var q4 = data.q4
+        var object = {Plays: q4, Yes: data.q7a, No: data.q7b}
+        return object
+}
 
-
-var keys = Object.keys(data[0]).slice(1)
-
-        x0.domain(data.map(function (d) { return "Question " + d.Question; }));
+ data = JSON.parse(New);
+        var keys = Object.keys(data[0]).slice(1);
+       x0.domain(data.map(function (d) { return d.Question; }));
         x1.domain(keys).rangeRound([0, x0.bandwidth()]);
-        y.domain([0, 15])
+        y.domain([0, 14])
 
         g.append("g")
             .selectAll("g")
             .data(data)
             .enter().append("g")
-            .attr("transform", function (d) { return "translate(" + x0(d.Question) + ",0)"; })
+            .attr("transform", function (d) { return "translate(" +x0(d.Question)+",0)"; })
             .selectAll("rect")
             .data(function (d) { return keys.map(function(key) { return { key: key, value: d[key] }; }); })
             .enter().append("rect")
+            .attr("class", "Question")
             .attr("x", function (d) { return x1(d.key); })
             .attr("y", function (d) { return y(d.value); })
             .attr("width", x1.bandwidth())
             .attr("height", function (d) { return height - y(d.value); })
             .attr("fill", function (d) { return z(d.key); });
 
+// Creates X Axis
         g.append("g")
             .attr("class", "axis")
             .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x0));
-
+            .call(d3.axisBottom(x0))
+// Creates Y Axis
         g.append("g")
             .attr("class", "axis")
             .call(d3.axisLeft(y).ticks(null))
@@ -73,7 +80,7 @@ var keys = Object.keys(data[0]).slice(1)
             .selectAll("g")
             .data(keys.slice().reverse())
             .enter().append("g")
-            .attr("transform", function (d, i) { return "translate(0," + i * 20 + ")"; });
+            .attr("transform", function (d, i) { return "translate(0," + i * 25 + ")"; });
 
         legend.append("rect")
             .attr("x", width - 19)
