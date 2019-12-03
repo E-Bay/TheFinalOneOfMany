@@ -4,6 +4,7 @@ dataPromise.then(function(data)
 {
     var New = data.map(newData)
     console.log(New)
+    Create(New)
 },
 function(err)
 {console.log(err)})
@@ -29,13 +30,13 @@ var svg = d3.select("svg"),
         
 var newData = function(data)
 {
-    var q4 = data.q4
-        var object = {Plays: q4, Yes: data.q7a, No: data.q7b}
+        var object = {Plays: data.q4, Yes: data.q7a, No: data.q7b, GenderP: data.psex, Stops: data.q5d}
         return object
 }
-
- data = JSON.parse(New);
-        var keys = Object.keys(data[0]).slice(1);
+var Create = function(question)
+{
+Usedata = JSON.parse(question);
+        var keys = Object.keys(Usedata[0]).slice(1);
        x0.domain(data.map(function (d) { return d.Question; }));
         x1.domain(keys).rangeRound([0, x0.bandwidth()]);
         y.domain([0, 14])
@@ -93,3 +94,4 @@ var newData = function(data)
             .attr("y", 9.5)
             .attr("dy", "0.32em")
             .text(function (d) { return d; });
+}
