@@ -1,6 +1,7 @@
 h1
 {
-    
+    text-align: center;
+    font-style: italic;
 }
 body
 {
@@ -8,5 +9,26 @@ body
 }
 div
 {
-    background-color: #7D8F75
+    color: white;
+    background-color: #362E2B;
+    width: 700px;
+    height: 200px;
+    float: right;
+    padding: 30px;
+}
+#text
+{
+    font-size: 30px;
+    position: fixed;
+    top: 520px;
+    left: 1150px;
+}
+button
+{
+    font-size: 20px;
+    clear: both;
+}
+svg
+{
+    background-color: white;
 }

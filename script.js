@@ -1,5 +1,5 @@
-var screen = {width:1000,height:700}
-var margins = {top:10,right:100,left:25,bottom:50}
+var screen = {width:1100,height:700}
+var margins = {top:10,right:120,left:25,bottom:50}
 
 var data = [{ Year: "2015", Handheld: "3", Webgames: "6", TabletGames: "9", "Smartphone": "24", Console: "30", PC: "28"}, { Year: "2016", Handheld: "2", Webgames: "5", TabletGames: "10", Smartphone: "27", Console: "29", PC: "27"}, { Year: "2017", Handheld: "1", Webgames: "5", TabletGames: "10", Smartphone: "30", Console: "28", PC: "26"}, { Year: "2018", Handheld: "0", Webgames: "4", TabletGames: "11", Smartphone: "32", Console: "27", PC: "26" }, { Year: "2019", Handheld: "0", Webgames: "4", TabletGames: "11", Smartphone: "34", Console: "26", PC: "25"}]
 
@@ -66,7 +66,7 @@ var drawLegend = function(data, cScale)
 {
     d3.select("svg")
       .append("g").attr("id", "legend")
-      .attr("transform", "translate(" + (screen.width-margins.right) + "," + (margins.top) + ")")
+      .attr("transform", "translate(" + (10+screen.width-margins.right) + "," + (margins.top) + ")")
     
     var gs = d3.select("#legend")
                .selectAll("g")
