@@ -2,6 +2,7 @@ h1
 {
     text-align: center;
     font-style: italic;
+    background-color: #362E2B;
 }
 body
 {
@@ -9,7 +10,7 @@ body
 }
 div
 {
-    color: white;
+    color: #F2E8C3;
     background-color: #362E2B;
     width: 700px;
     height: 200px;
